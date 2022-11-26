@@ -1,10 +1,20 @@
 const express = require('express')
-const { builtinModules } = require('module')
+const userActions = require('../models/usermodels')
 
 const router = express.Router()
 
+console.log(userActions)
+
 router.get('/',(req,res)=>{
   res.render('home')
+})
+
+router.get('/logIn',(req,res)=>{
+  res.render('log-in')
+})
+
+router.get('/signUp',(req,res)=>{
+  res.render('sign-up')
 })
 
 module.exports = router

@@ -3,8 +3,6 @@ const userActions = require('../models/usermodels')
 
 const router = express.Router()
 
-console.log(userActions)
-
 router.get('/',(req,res)=>{
   res.render('home')
 })
@@ -15,6 +13,10 @@ router.get('/logIn',(req,res)=>{
 
 router.get('/signUp',(req,res)=>{
   res.render('sign-up')
+})
+
+router.get('/user',(req,res)=>{
+  res.render('user')
 })
 
 module.exports = router

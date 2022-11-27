@@ -1,13 +1,20 @@
+const res = require('express/lib/response')
 const db = require('../data/database')
 
 
-function insertUser(){
-  console.log("here")
-  db.query(``)
+async function insertUser(name,password,email,level,lives){
+  data = [
+    name,
+    password,
+    email,
+    level,
+    lives
+  ]
+  await db.query(`INSERT INTO users(userName,password,email,level,lives)VALUES(?)`,[data])
 }
 
-function logIn(){
-  db.query(``)
+async function logIn(userName){
+  await db.query(`SELECT*FROM users WHERE(userName = ${userName})`)
 }
 
 module.exports = {

@@ -3,7 +3,11 @@ const userActions = require('../models/usermodels')
 
 const router = express.Router()
 
+
 router.get('/',(req,res)=>{
+ 
+  req.session.isAuth = false
+  console.log(req.session)
   res.render('home')
 })
 
@@ -16,7 +20,11 @@ router.get('/signUp',(req,res)=>{
 })
 
 router.get('/user',(req,res)=>{
-  res.render('user')
+  req.session.message = "here"
+  if(!req.session.isAuth){
+    return res.render('404.ejs',{m: req.session.message})
+  }
+
 })
 
 module.exports = router

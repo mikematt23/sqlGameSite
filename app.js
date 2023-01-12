@@ -8,6 +8,7 @@ const postRoutes = require('./routes/sitePostRoutes')
 const gameGetRoutes = require('./routes/gameGetRoutes')
 const gamePostRoutes = require('./routes/gamePostRoutes')
 const middleware = require('./middleware/middleware')
+const { env } = require('process')
 
 
 const app = express()
@@ -44,4 +45,4 @@ app.use(postRoutes)
 app.use(gameGetRoutes)
 app.use(gamePostRoutes)
 
-app.listen(3002)
+app.listen(env.PORT)

@@ -45,4 +45,4 @@ app.use(postRoutes)
 app.use(gameGetRoutes)
 app.use(gamePostRoutes)
 
-app.listen(env.PORT)
+app.listen(process.env.PORT)

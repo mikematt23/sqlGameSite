@@ -1,30 +1,15 @@
 const express = require('express')
-const userActions = require('../models/usermodels')
-
+const getActions = require('../controllers/getController')
 const router = express.Router()
 
 
-router.get('/',(req,res)=>{
- 
-  req.session.isAuth = false
-  console.log(req.session)
-  res.render('home')
-})
+router.get('/', getActions.home)
 
-router.get('/logIn',(req,res)=>{
-  res.render('log-in')
-})
+router.get('/logIn',getActions.logIn)
 
-router.get('/signUp',(req,res)=>{
-  res.render('sign-up')
-})
+router.get('/signUp',getActions.signUp)
 
-router.get('/user',(req,res)=>{
-  req.session.message = "here"
-  if(!req.session.isAuth){
-    return res.render('404.ejs',{m: req.session.message})
-  }
+router.get('/user',getActions.user)
 
-})
 
 module.exports = router

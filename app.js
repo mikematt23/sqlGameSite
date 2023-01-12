@@ -5,6 +5,9 @@ const MySQlStore = require('express-mysql-session')(session)
 const path = require('path')
 const siteRoutes = require('./routes/siteGetRoutes')
 const postRoutes = require('./routes/sitePostRoutes')
+const gameGetRoutes = require('./routes/gameGetRoutes')
+const gamePostRoutes = require('./routes/gamePostRoutes')
+const middleware = require('./middleware/middleware')
 
 
 const app = express()
@@ -22,7 +25,7 @@ const sessionStore = new MySQlStore({},connection)
 
 app.use(session({
   secret : "mine",
-  cookie: {maxAge:30000},
+  cookie: {maxAge:3000000},
   saveUninitialized : false,
   resave: false,
   store: sessionStore
@@ -33,8 +36,12 @@ app.set("views", path.join(__dirname,'views'))
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, "javascript")))
 
+app.use(middleware)
 app.use(siteRoutes)
 app.use(postRoutes)
+app.use(gameGetRoutes)
+app.use(gamePostRoutes)
 
-app.listen(3000)
+app.listen(3002)

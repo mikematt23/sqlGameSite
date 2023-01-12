@@ -1,4 +1,4 @@
-const res = require('express/lib/response')
+
 const db = require('../data/database')
 
 
@@ -14,8 +14,11 @@ async function insertUser(name,password,email,level,lives){
 }
 
 async function logIn(userName){
-  await db.query(`SELECT*FROM users WHERE(userName = ${userName})`)
+  let query = `SELECT * FROM users WHERE(userName = '${userName}' )`
+  return await db.query(query)
 }
+
+
 
 module.exports = {
   insertUser: insertUser,

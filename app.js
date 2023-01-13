@@ -44,5 +44,6 @@ app.use(siteRoutes)
 app.use(postRoutes)
 app.use(gameGetRoutes)
 app.use(gamePostRoutes)
+const PORT = process.env.PORT || 3000
 
-app.listen(process.env.PORT)
+app.listen(PORT , console.log("server running on port"+ PORT))

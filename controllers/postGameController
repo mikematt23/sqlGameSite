@@ -10,6 +10,7 @@ async function testLevelOne(req,res){
     await gameActions.updateLives(req.session.user.userId, lives[0][0].lives)
     lives = await gameActions.getLives(req.session.user.userId)
     if(lives[0][0].lives == 0){
+      res.locals.isAuth = true 
      res.render('gameOver')
     }
     
@@ -21,6 +22,7 @@ async function testLevelOne(req,res){
     await gameActions.updateLives(req.session.user.userId, lives[0][0].lives)
     lives = await gameActions.getLives(req.session.user.userId)
     if(lives[0][0].lives == 0){
+      res.locals.isAuth = true 
       res.render('gameOver')
      }
     return res.render('level1',{message : "Your Number is LOWER", lives : lives[0][0].lives, number : req.body.anwser})
@@ -42,7 +44,8 @@ async function testLevelTwo (req,res){
     lives = await gameActions.getLives(req.session.user.userId)
 
     if(lives[0][0].lives == 0){
-      res.render('gameOver')
+       res.locals.isAuth = true 
+       res.render('gameOver')
      }
 
      res.render('level2',{message : "Your Number is HIGHER", lives : lives[0][0].lives , number : req.body.anwser})
@@ -54,6 +57,7 @@ async function testLevelTwo (req,res){
     lives = await gameActions.getLives(req.session.user.userId)
     
     if(lives[0][0].lives == 0){
+      res.locals.isAuth = true 
       res.render('gameOver')
      }
 
@@ -76,6 +80,7 @@ async function testLevelThree(req,res){
     lives = await gameActions.getLives(req.session.user.userId)
     
     if(lives[0][0].lives == 0){
+      res.locals.isAuth = true 
       res.render('gameOver')
      }
 
@@ -88,6 +93,7 @@ async function testLevelThree(req,res){
     lives = await gameActions.getLives(req.session.user.userId)
 
     if(lives[0][0].lives == 0){
+      res.locals.isAuth = true 
       res.render('gameOver')
      }
 

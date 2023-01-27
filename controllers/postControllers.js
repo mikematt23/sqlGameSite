@@ -1,8 +1,9 @@
 const userActions = require('../models/usermodels')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const gameActions = require('../models/gameActions')
 
 async function userSignUp(req,res){
+  console.log(req.body)
   const name = req.body.userName
   const password = req.body.password
   const email = req.body.email
@@ -11,6 +12,7 @@ async function userSignUp(req,res){
   
   const hashedPassword = await bcrypt.hash(password,3)
   let userCheck = await userActions.logIn(name)
+  console.log(userCheck)
   if(userCheck[0][0]){
    return res.render('404',{m: "You already have an account please sing in"})
   }

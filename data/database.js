@@ -1,12 +1,11 @@
 const mysql = require('mysql2/promise')
 
 const pool = mysql.createPool({
-  connectionLimit:20,
-  host: 'containers-us-west-139.railway.app',
-  user:"root",
-  password:"@SSassin55",
-  database : "game_site"
+  host: 'containers-us-west-77.railway.app',
+  database: "railway",
+  user: 'root',
+  password: 'c8SbUFHSJHb7Rn1GwQq7',
+  port: '6641'
 })
-
 
 module.exports = pool
